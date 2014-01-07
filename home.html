@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<title>Water Buckets</title>
+    <link rel="stylesheet" type="text/css" href="static/home.css">
+		<script type="text/javascript">
+  	    var bucket1 = [0, 3];
+  			var bucket2 = [0, 5];
+        var done = false;
+
+        function update_buckets() {
+            if(bucket1[0]===0 && bucket2[0]===0) {
+              document.getElementById('bucket1').src="http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg";
+              document.getElementById('bucket2').src="http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg";
+            } else if(bucket2[0]===0) {
+              document.getElementById('bucket2').src="http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg";
+              document.getElementById('bucket1').src="static/bucket" + bucket1[0] + ".jpg";
+            } else if(bucket1[0]===0) {
+              document.getElementById('bucket1').src="http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg";
+              document.getElementById('bucket2').src="static/bucket" + bucket2[0] + ".jpg";
+            } else {
+            document.getElementById('bucket1').src="static/bucket" + bucket1[0] + ".jpg";
+            document.getElementById('bucket2').src="static/bucket" + bucket2[0] + ".jpg"
+            }
+            document.getElementById("counter1").innerHTML = bucket1[0].toString() + ' gal';
+            document.getElementById("counter2").innerHTML = bucket2[0].toString() + ' gal';
+            if(bucket2[0]===4 && done!==true) {
+               var div = document.createElement('div');
+               document.body.appendChild(div);
+               div.id = "result"
+               div.innerHTML = '<p>Congratulations! You measured out 4 gallons of water!</p>';
+               done = true; 
+            }
+        }
+
+  			function fill_bucket1(img) {
+      			if(img.src=="http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg") {
+          			img.src="static/bucket3.jpg";
+          			bucket1 = [3, 3];
+                update_buckets();
+      			 } else {
+          			img.src="http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg";
+          			bucket1 = [0, 3];
+                update_buckets();
+  				}
+  			}
+
+  			function fill_bucket2(img) {
+      			if(img.src=="http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg") {
+          			img.src="static/bucket5.jpg";
+          			bucket2 = [5, 5];
+                update_buckets();
+      			 } else {
+          			img.src="http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg";
+          			bucket2 = [0, 5];
+                update_buckets();
+  				}
+  			}
+  			
+        function transfer_right() {			
+          if(bucket1[0]==0) {
+            update_buckets();
+          } else {        
+            if(bucket1[0]+bucket2[0]>5) {
+              bucket1 = [bucket1[0]-(5-bucket2[0]), 3];
+              bucket2 = [5, 5];
+              update_buckets();
+            } else {
+              bucket2 = [bucket1[0]+bucket2[0], 5]; 
+              bucket1 = [0, 3];
+              update_buckets();
+  			   }
+        }
+      }
+      function transfer_left() {     
+          if(bucket2[0]==0) {
+            update_buckets();
+          } else {        
+            if(bucket1[0]+bucket2[0]>3) {
+              bucket2 = [bucket2[0]-(3-bucket1[0]), 5];
+              bucket1 = [3, 3];
+              
+              update_buckets();
+            } else {
+              bucket1 = [bucket1[0]+bucket2[0], 3]; 
+              bucket2 = [bucket2[0]-bucket1[0], 5];
+              update_buckets();
+           }
+        }
+      }
+
+
+
+		</script>
+	</head>
+	
+
+
+
+  <body>
+		<div id='heading'>
+			<h1>Water Buckets</h1>
+      <p>Solve the water bucket problem, interactively!</p>
+		</div>
+    <div id='info'>
+			<p>Measure <em>exactly</em> 4 gallons of water in the big bucket, using only these two buckets. The small bucket can hold up to 3 gallons of water, while the bigger buckets can hold up to 5 gallons. Click a bucket to fill it with water, click again to empty it.</p> 
+		</div>
+		<div id='buckets'>
+			<img height="200px" src='http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg' id="bucket1" onclick="fill_bucket1(this)">
+			<img height="333px" src='http://3.bp.blogspot.com/_9gOXIo7YCBE/TBKwfUslGFI/AAAAAAAAB3o/O5B9ejmLHho/s320/Bucket_2.jpg' id='bucket2' onclick="fill_bucket2(this)">
+		</div>
+    <div id='counters'>
+      <div id='counter1'>0 gal</div>
+      <div id='counter2'>0 gal</div>
+    </div> 
+		<div id='transfer'>
+			<button id='transfer_right' onclick="transfer_right()">Transfer Right</button>
+			<button id='transfer_left' onclick="transfer_left()">Transfer Left</button> 
+		</div>
+	</body>
+</html> 
