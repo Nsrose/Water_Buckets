@@ -3,61 +3,48 @@
 }
 
 html {
-    width: 75%;
+    background: #DDD;
+}
+#container {
+    background: white;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 1px 0px;
+    padding: 0px 0px 50px 0px;
+}
+#heading {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+#overlay {
+    width: 800px;
+    height: 300px;
+    position: absolute;
+    display: block;
     margin-left: auto;
     margin-right: auto;
 }
-
-#heading {
-    text-align: left;
-    border-bottom: solid;
-    box-shadow: 1.5px 1.5px 1.5px 1.5px;
-    background-color: aliceblue;
-    padding: 15px;
+#overlay > img {
+    width: 100%;
+    height: 100%;
 }
 
 #info {
-    text-align: center;
-}
-#buckets {
-    text-align: center;
-}
-#counter1 {
-    margin-left: 250px;
-    position: absolute;
-}
-#counter2 {
-    margin-left: 500px;
+    margin-left: 50px;
+    margin-right: 50px;
     position: relative;
 }
-
-#transfer_right {
-    margin-right: 200px;
-    padding: 10px;
+#buckets {
+    position: relative;
+}
+#counters {
+    position: relative;
 }
 #transfer {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    position: relative;
 }
-#transfer_left {
-    padding: 10px;
-}
-
-#transfer_left:hover {
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );  background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');  background-color:#dfdfdf;
-}
-
-#transfer_right:hover {
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );  background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');  background-color:#dfdfdf;
-}
-
-#result {
-    text-align: center;
-    width: 450px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 1.5px 1.5px 1.5px 1.5px;
-    background-color: aliceblue;
-    padding: 5px;
+#title {
+    position: relative;
 }
